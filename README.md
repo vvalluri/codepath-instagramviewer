@@ -16,3 +16,4 @@ User Stories completed:
 
 Gif walkthrough:
 ===============
+![alt tag](https://github.com/vvalluri/codepath-instagramviewer/blob/master/codepath-instagram-1.gif)
