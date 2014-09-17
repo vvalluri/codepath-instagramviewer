@@ -50,8 +50,9 @@ public class InstaPhotosAdapter extends ArrayAdapter<InstaPhoto> {
 		imgUser.setText(photo.username);
 		
 		// Get the create time
-		postdate = DateUtils.getRelativeTimeSpanString(photo.createtime * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+		postdate = DateUtils.getRelativeTimeSpanString(photo.createtime * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL);
 		imgTime.setText(postdate);
+		//imgTime.setBackgroundColor(0xFF00FF00);
 		
 		// Get the caption
 		if (photo.caption == null) {
@@ -93,21 +94,28 @@ public class InstaPhotosAdapter extends ArrayAdapter<InstaPhoto> {
 		int screenheight = size.y;
 		Log.d("DEBUG", "Instagram photo H:" + photo.imgheight + " W:" + photo.imgWidth + 
 				"Screeen H:" + screenheight  + " W:" + screenwidth);
-		// Image height is screen height minus margins taken by centerInside below. Width is same as screen
-		int fittedimgheight = screenheight;
-		if (photo.imgheight < fittedimgheight) {
-			fittedimgheight = fittedimgheight - 2*(fittedimgheight - photo.imgheight);
-		}
-		int fittedimgwidth = screenwidth;
+
+		/* Set the imageview layout params to the screen size width and aspect ratio */
+		float fittedimgheight;
+		float fittedimgwidth;
+		fittedimgwidth = (float) screenwidth;
+		fittedimgheight = fittedimgwidth * ((float) photo.imgheight / (float) photo.imgWidth);
+		
+		// Set the layout params to the newly calculated dimensions
+		ViewGroup.LayoutParams iv_lparams = imgPhoto.getLayoutParams();
+		iv_lparams.height = (int) fittedimgheight;
+		iv_lparams.width = (int) fittedimgwidth;
+		imgPhoto.setLayoutParams(iv_lparams);
 		
 		// cleanup subview if recycled to clear the previous image content
-		imgPhoto.getLayoutParams().height = fittedimgheight;
+		imgPhoto.getLayoutParams().height = (int) fittedimgheight;
 		imgPhoto.setImageResource(0);
 
 		// fetch the photo from the url using Picassa asynchronously in background not in main thread
 		// It downloads the imagebytes, converts to bitmap and loads the image
 		//imgPhoto.setBackgroundColor(0xFF00FF00);
-		Picasso.with(getContext()).load(photo.imgurl).resize(fittedimgwidth, fittedimgheight).centerInside().into(imgPhoto);
+		Picasso.with(getContext()).load(photo.imgurl).fit().centerInside().into(imgPhoto);
+		
 		return convertView;
 	}
 	

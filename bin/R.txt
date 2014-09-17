@@ -12,6 +12,7 @@ int dimen activity_vertical_margin 0x7f040001
 int drawable default_avatar 0x7f020000
 int drawable ic_launcher 0x7f020001
 int drawable likeicon 0x7f020002
+int drawable timeicon 0x7f020003
 int id action_settings 0x7f080009
 int id imagePhoto 0x7f080005
 int id imgUser 0x7f080002
