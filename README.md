@@ -19,7 +19,7 @@ New
 
 Gif walkthrough 2
 =================
-![alt tag](https://github.com/vvalluri/codepath-instagramviewer/blob/master/codepath-instagram-2.gif)
+![alt tag](https://github.com/vvalluri/codepath-instagramviewer/blob/master/codepath-instagram-3.gif)
 
 Gif walkthrough:
 ===============
