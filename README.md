@@ -12,8 +12,16 @@ User Stories completed:
 3. Advanced: Added pull-to-refresh for popular stream with SwipeRefreshLayout
 4. Advanced: Shows latest 2 comments for each photo
 5. Advanced: Displayed each photo with the same style and proportions as the real Instagram (tried my best :-))
+=====================
+New
+6. Fix the Image display by using the following (get the screen size (height, width), get instagram photo aspect ratio, set the imageview layout params to width = screen width and height = screen width * aspect ratio
+7. Added icon for time elapsed and updated font. Please see new gif below
 
+Gif walkthrough 2
+=================
+![alt tag](https://github.com/vvalluri/codepath-instagramviewer/blob/master/codepath-instagram-2.gif)
 
 Gif walkthrough:
 ===============
 ![alt tag](https://github.com/vvalluri/codepath-instagramviewer/blob/master/codepath-instagram-1.gif)
+
